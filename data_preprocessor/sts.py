@@ -1,4 +1,6 @@
 import statistics
+import matplotlib.pyplot as plt
+
 
 
 def initialise():
@@ -30,7 +32,7 @@ def getSentences():
 
 
 def analysis():
-    with open(".././sts-data/sts-ans-ans-adj.txt", "r") as fileObj:
+    with open(".././sts-data/sts-ans-ans-adj-no-sigmoid.txt", "r") as fileObj:
         for line in fileObj:
             part = line.split()
             part = list(map(int, part))
@@ -41,6 +43,9 @@ def analysis():
 
     for key in sorted(sim_values.keys()):
         print(key, " ", statistics.stdev(sim_values[key]), statistics.mean(sim_values[key]))
+        plt.hist(sim_values[key], bins=30)
+        plt.ylabel(key)
+        plt.show()
 
 
 W = set()

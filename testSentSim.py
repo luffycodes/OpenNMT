@@ -42,7 +42,7 @@ keys_index = []
 def main():
     initialise()
     for i in range(0, len(keys_index), 2):
-        print(int(sigmoid(cosine_sim(W1[keys_index[i]], W1[keys_index[i + 1]])) * 100))
+        print(int(cosine_sim(W1[keys_index[i]], W1[keys_index[i + 1]]) * 100))
 
 
 if __name__ == "__main__":
