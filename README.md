@@ -1,8 +1,10 @@
 [![Build Status](https://api.travis-ci.org/OpenNMT/OpenNMT.svg?branch=master)](https://travis-ci.org/OpenNMT/OpenNMT) [![codecov](https://codecov.io/gh/OpenNMT/OpenNMT/branch/master/graph/badge.svg)](https://codecov.io/gh/OpenNMT/OpenNMT)
 
-# OpenNMT: Open-Source Neural Machine Translation
+# OpenNMT for Sentence Embeddings
 
 [OpenNMT](http://opennmt.net/) is a full-featured, open-source (MIT) neural machine translation system utilizing the [Torch](http://torch.ch) mathematical toolkit.
+
+Code has been modified for getting vectors for sentence embeddings.
 
 <center style="padding: 40px"><img width="70%" src="http://opennmt.github.io/simple-attn.png" /></center>
 
