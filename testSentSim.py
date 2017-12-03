@@ -1,3 +1,10 @@
+import math
+
+
+def sigmoid(x):
+    return 1 / (1 + math.exp(-x))
+
+
 def normalize(a):
     length = 0
     for x in a:
@@ -18,23 +25,24 @@ def cosine_sim(a, b):
 
 def initialise():
     print("Loading sentence vectors...")
-    with open("pred.txt", "r") as fileObj:
+    with open("./sts-data/sts-ans-ans-vec.txt", "r") as fileObj:
         for line in fileObj:
             word = line.split()[0]
             word = str(word)
             line = list(map(float, line.split()[1:]))
             W1[word] = normalize(line)
+            keys_index.append(word)
     print("Loaded sentence vectors. Fire in the hole.")
 
 
 W1 = {}
+keys_index = []
 
 
 def main():
     initialise()
-    for key1 in W1.keys():
-        for key2 in W1.keys():
-            print(key1, " ", key2, " ", cosine_sim(W1[key1], W1[key2]))
+    for i in range(0, len(keys_index), 2):
+        print(int(sigmoid(cosine_sim(W1[keys_index[i]], W1[keys_index[i + 1]])) * 100))
 
 
 if __name__ == "__main__":
