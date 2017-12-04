@@ -11,13 +11,14 @@ def initialise():
             word = str(line.strip())
             if len(word) != 0:
                 W.add(lineNum)
+                gs_score[lineNum] = word
             lineNum = lineNum + 1
     print("Loaded " + task + " gs file")
 
 
 # Find set of lines which have their score in gold standard file
 def getSentences():
-    g = open(".././sts-data/sts-" + task + ".txt", "w+")
+    g = open(".././sts-data/sts-" + task + "_gs_scores.txt", "w+")
     print("Loading " + task + " input file")
     with open(sts_dataset_path + "STS2016.input." + task + ".txt", "r") as fileObj:
         lineNum = 1
@@ -25,7 +26,8 @@ def getSentences():
             line = str(line.strip())
             lineParts = line.split('\t')
             if lineNum in W:
-                g.write(lineParts[0] + "\n")
+                g.write(gs_score[lineNum] + " ")
+                g.write(lineParts[0] + " ")
                 g.write(lineParts[1] + "\n")
             lineNum = lineNum + 1
     g.close()
@@ -50,17 +52,18 @@ def analysis():
         plt.show()
 
 
-task = "headlines"
+task = "answer-answer"
 W = set()
 sim_values = dict()
 count = dict()
+gs_score = dict()
 sts_dataset_path = "/home/zoro/Documents/local_ss164gd/Sem_2/ELEC599/Data/Dataset/sts2016-english-with-gs-v1.0/"
 
 
 def main():
-    # initialise()
-    # getSentences()
-    analysis()
+    initialise()
+    getSentences()
+    # analysis()
 
 
 if __name__ == "__main__":
