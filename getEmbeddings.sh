@@ -1,2 +1,2 @@
 #!/bin/bash
-th translate.lua -dump_input_encoding 1 -model ~/Downloads/onmt_baseline_wmt15-all.en-de_epoch13_7.19_release.t7 -src data/random.txt -output pred.txt
+th translate.lua -dump_input_encoding 1 -model /home/zoro/Documents/local_ss164gd/Sem_2/ELEC599/Data/OpenNMT_Trained_Models/onmt_baseline_wmt15-all.en-de_epoch13_7.19_release.t7 -src /home/zoro/PycharmProjects/OpenNMT/sts-data/sts-headlines.txt -output /home/zoro/PycharmProjects/OpenNMT/sts-data/sts-headlines-vec.txt

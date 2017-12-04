@@ -2,23 +2,24 @@ import statistics
 import matplotlib.pyplot as plt
 
 
-
+# Find line numbers which have gold standard scores
 def initialise():
-    print("Loading gs file")
-    with open(sts_dataset_path + "STS2016.gs.answer-answer.txt", "r") as fileObj:
+    print("Loading " + task + " gs file")
+    with open(sts_dataset_path + "STS2016.gs." + task + ".txt", "r") as fileObj:
         lineNum = 1
         for line in fileObj:
             word = str(line.strip())
             if len(word) != 0:
                 W.add(lineNum)
             lineNum = lineNum + 1
-    print("Loaded gs file")
+    print("Loaded " + task + " gs file")
 
 
+# Find set of lines which have their score in gold standard file
 def getSentences():
-    g = open(".././sts-data/STS2016.input.answer-answer.txt", "w+")
-    print("Loading input file")
-    with open(sts_dataset_path + "STS2016.input.answer-answer.txt", "r") as fileObj:
+    g = open(".././sts-data/sts-" + task + ".txt", "w+")
+    print("Loading " + task + " input file")
+    with open(sts_dataset_path + "STS2016.input." + task + ".txt", "r") as fileObj:
         lineNum = 1
         for line in fileObj:
             line = str(line.strip())
@@ -28,11 +29,12 @@ def getSentences():
                 g.write(lineParts[1] + "\n")
             lineNum = lineNum + 1
     g.close()
-    print("Loaded input file")
+    print("Loaded  " + task + " input file")
 
 
+# Given adjacent cosine score & gs score, plot histogram
 def analysis():
-    with open(".././sts-data/sts-ans-ans-adj-no-sigmoid.txt", "r") as fileObj:
+    with open(".././sts-data/sts-" + task + "-adj-no-sigmoid.txt", "r") as fileObj:
         for line in fileObj:
             part = line.split()
             part = list(map(int, part))
@@ -48,6 +50,7 @@ def analysis():
         plt.show()
 
 
+task = "headlines"
 W = set()
 sim_values = dict()
 count = dict()

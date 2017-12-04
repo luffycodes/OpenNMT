@@ -25,7 +25,7 @@ def cosine_sim(a, b):
 
 def initialise():
     print("Loading sentence vectors...")
-    with open("./sts-data/sts-ans-ans-vec.txt", "r") as fileObj:
+    with open("./sts-data/sts-" + task + "-vec.txt", "r") as fileObj:
         for line in fileObj:
             word = line.split()[0]
             word = str(word)
@@ -37,6 +37,7 @@ def initialise():
 
 W1 = {}
 keys_index = []
+task = "headlines"
 
 
 def main():
